@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Class-Path: spring-boot-starter-web-2.1.0.BUILD-20180601.005047-143.ja
+ r lz4-java-1.4.jar spring-kafka-2.2.0.BUILD-20180601.150231-28.jar re
+ actor-core-3.2.0.BUILD-20180530.110529-62.jar spring-boot-starter-dat
+ a-redis-2.1.0.BUILD-20180601.005036-143.jar netty-transport-4.1.24.Fi
+ nal.jar spring-boot-autoconfigure-2.1.0.BUILD-20180601.005009-143.jar
+  tomcat-embed-core-8.5.31.jar commons-pool2-2.5.0.jar jul-to-slf4j-1.
+ 7.25.jar jboss-logging-3.3.2.Final.jar commons-codec-1.10.jar netty-a
+ ll-4.1.24.Final.jar javax.annotation-api-1.3.2.jar spring-data-keyval
+ ue-2.1.0.M3.jar reactive-streams-1.0.2.jar spring-boot-2.1.0.BUILD-20
+ 180601.005052-143.jar spring-boot-starter-2.1.0.BUILD-20180601.005048
+ -143.jar jackson-databind-2.9.5.jar spring-data-redis-2.1.0.M3.jar sp
+ ring-messaging-5.0.6.RELEASE.jar snappy-java-1.1.7.1.jar spring-beans
+ -5.0.6.RELEASE.jar spring-boot-starter-logging-2.1.0.BUILD-20180601.0
+ 05042-143.jar netty-resolver-4.1.24.Final.jar spring-aop-5.0.6.RELEAS
+ E.jar slf4j-api-1.7.25.jar netty-handler-4.1.24.Final.jar jackson-ann
+ otations-2.9.0.jar jackson-module-parameter-names-2.9.5.jar spring-we
+ bmvc-5.0.6.RELEASE.jar spring-boot-starter-json-2.1.0.BUILD-20180601.
+ 005040-143.jar lettuce-core-5.1.0.M1.jar spring-boot-starter-aop-2.1.
+ 0.BUILD-20180601.005029-143.jar kafka-clients-1.1.0.jar gson-2.8.2.ja
+ r spring-boot-starter-tomcat-2.1.0.BUILD-20180601.005045-143.jar spri
+ ng-oxm-5.0.6.RELEASE.jar logback-core-1.2.3.jar spring-web-5.0.6.RELE
+ ASE.jar classmate-1.3.4.jar snakeyaml-1.19.jar spring-core-5.0.6.RELE
+ ASE.jar netty-common-4.1.24.Final.jar spring-jcl-5.0.6.RELEASE.jar sp
+ ring-context-5.0.6.RELEASE.jar log4j-to-slf4j-2.10.0.jar aspectjweave
+ r-1.9.0.jar spring-data-commons-2.1.0.M3.jar netty-buffer-4.1.24.Fina
+ l.jar tomcat-embed-el-8.5.31.jar spring-tx-5.0.6.RELEASE.jar jedis-2.
+ 9.0.jar jackson-datatype-jdk8-2.9.5.jar logback-classic-1.2.3.jar log
+ 4j-api-2.10.0.jar spring-context-support-5.0.6.RELEASE.jar spring-exp
+ ression-5.0.6.RELEASE.jar validation-api-2.0.1.Final.jar spring-retry
+ -1.2.2.RELEASE.jar tomcat-embed-websocket-8.5.31.jar jackson-datatype
+ -jsr310-2.9.5.jar netty-codec-4.1.24.Final.jar jackson-core-2.9.5.jar
+  hibernate-validator-6.0.9.Final.jar
+Main-Class: com.lanxinbase.NettyApplication
+
