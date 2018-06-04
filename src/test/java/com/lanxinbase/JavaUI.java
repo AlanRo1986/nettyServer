@@ -1,8 +1,12 @@
 package com.lanxinbase;
 
+import com.lanxinbase.system.utils.DateUtils;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Timer;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -41,6 +45,10 @@ class JavaUI {
         button.setBounds(90, 120, 80, 32);
         button1.setBounds(90, 170, 120, 32);
 
+        JTextArea remark = new JTextArea();
+        remark.setBounds(90,220,460,180);
+        remark.setLineWrap(true);
+
         ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(10000,30000,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(100));
         button.addActionListener(new AbstractAction() {
             @Override
@@ -52,7 +60,7 @@ class JavaUI {
                 for (;;){
                     i++;
 //                    poolExecutor.execute(doThread(i));
-                    poolExecutor.execute(new WorkRun("1000"+i,2000L));
+                    poolExecutor.execute(new WorkRun("2000"+i,60000L));
                     if(i == Integer.parseInt(username.getText())){
                         break;
                     }
@@ -64,11 +72,12 @@ class JavaUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StringBuffer sb = new StringBuffer();
-                sb.append("corePoolSize:"+poolExecutor.getCorePoolSize()+"\t")
-                        .append("activeCount:"+poolExecutor.getActiveCount()+"\t")
-                        .append("taskCount:"+poolExecutor.getTaskCount()+"\t");
+                sb.append("核心线程:"+poolExecutor.getCorePoolSize()+"      ")
+                        .append("激活线程:"+poolExecutor.getActiveCount()+"      ")
+                        .append("任务线程:"+poolExecutor.getTaskCount());
 
                 System.out.println(sb);
+                remark.setText(String.format("%s "+sb.toString(), DateUtils.getFullDateTime(null))+"\n"+remark.getText());
             }
         });
 
@@ -81,12 +90,26 @@ class JavaUI {
         panel.add(password);
         panel.add(button);
         panel.add(button1);
+        panel.add(remark);
 
         // 显示窗口
         jFrame.setSize(600, 480);
         jFrame.setBounds(100, 100, 600, 480);
 
         jFrame.setVisible(true);
+        jFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                poolExecutor.shutdownNow();
+                super.windowClosing(e);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                poolExecutor.shutdown();
+                super.windowClosed(e);
+            }
+        });
 
 
     }

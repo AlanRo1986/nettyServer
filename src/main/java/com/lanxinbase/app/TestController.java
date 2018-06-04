@@ -9,6 +9,7 @@ import com.lanxinbase.system.exception.IllegalServiceException;
 import com.lanxinbase.system.provider.CacheProvider;
 import com.lanxinbase.system.utils.DateUtils;
 import com.lanxinbase.system.utils.JsonUtils;
+import com.lanxinbase.system.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,7 +54,12 @@ public class TestController {
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     public ResultResp<Map<String,Object>> all(HttpServletRequest request){
         ResultResp<Map<String,Object>> resp = new ResultResp<>();
-        resp.setData((Map<String, Object>) cacheProvider.getAll());
+        Map<String,Object> data = (Map<String, Object>) cacheProvider.getAll();
+
+        resp.setCode(data.size());
+        if (StringUtils.isEmptyTrim(request.getParameter("notdata"))){
+            resp.setData(data);
+        }
         return resp;
     }
 

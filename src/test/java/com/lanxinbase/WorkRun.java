@@ -9,7 +9,7 @@ public class WorkRun implements Runnable {
     private Long intval;
     private String imei;
 //    private String msg = "<{\"imei\":\"%s\",\"index\":0,\"cmd\":\"RcdData\",\"params\":{\"ccid\":\"CC8000075\",\"state\":true,\"bvol\":24.33,\"mvol\":12.3,\"len\":12,\"ti\":5,\"vavg\":12.1,\"vmax\":13.5,\"vmin\":12.0,\"savg\":30.2,\"smax\":60.3,\"smin\":1.2,\"st\":1402512331,\"datas\":[ {\"g\":106.2123,\"a\":31.20315,\"s\":12.2,\"v\":12.5},{\"g\":106.21623,\"a\":31.20415,\"s\":16.2,\"v\":12.0},{\"g\":106.21263,\"a\":31.20015,\"s\":22.2,\"v\":12.7},{\"g\":106.21823,\"a\":31.26315,\"s\":32.2,\"v\":12.2}]}}>";
-    private String msg = "imei:%s";
+    private String msg = "{imei:%s}";
     private Socket socket;
 
     public WorkRun(String i,Long sleep){
@@ -53,6 +53,11 @@ public class WorkRun implements Runnable {
 
         } catch (InterruptedException e) {
             e.printStackTrace();
+            try {
+                socket.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
 
     }
@@ -60,9 +65,9 @@ public class WorkRun implements Runnable {
     private void connect(){
         if(socket==null || (socket!=null && socket.isClosed())){
             try {
-                socket = new Socket("127.0.0.1",8888);
+                socket = new Socket("192.168.1.205",9001);
                 socket.setKeepAlive(true);
-                System.out.println("客户端连接成功");
+                System.out.println(String.format("%s connect success.",socket.getLocalAddress()+":"+socket.getLocalPort()));
 
             } catch (IOException e) {
                 e.printStackTrace();

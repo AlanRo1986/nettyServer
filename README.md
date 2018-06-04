@@ -8,6 +8,10 @@
     
     框架主要业务：socket通信；同时集成了websocket&UDP协议服务端，详情请查阅：com.lanxinbase.socket..代码。
     为了做功能测试，集成了SpringMVC，理论上是不需要的，可自行在NettyApplication中屏蔽注解。
+    
+    测试数据：两台电脑每台电脑分别模拟16000~16400 socket客户端线程，线程发送消息后会自动休眠60s，测试
+    可支持~32546可客户端连接，资源有限，所以不做更高的测试，理论上应该可以支撑到15万socket端。
+    具体测试代码：test/java/com/lanxinbase/JavaUI.java
 ```
 ##2.框架包说明
 ```$xslt
@@ -70,3 +74,8 @@
         客户端收到登出指令后，可进行客户端业务离线处理。
     
 ```
+
+##4.打包编译
+    使用mvn clean package命令打包编译前，请确保您的Redis、Zookeeper、Kafka组件已预先启动。
+    
+
