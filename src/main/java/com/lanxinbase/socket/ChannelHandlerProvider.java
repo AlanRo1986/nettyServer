@@ -117,6 +117,9 @@ public class ChannelHandlerProvider implements IChannelHandlerProvider {
      */
     @Override
     public String getContextKey(ChannelHandlerContext ctx) {
+        if (ctx == null){
+            return null;
+        }
         return ctx.channel().remoteAddress().toString();
     }
 

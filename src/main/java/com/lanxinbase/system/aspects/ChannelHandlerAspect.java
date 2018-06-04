@@ -103,10 +103,12 @@ public class ChannelHandlerAspect {
         ChannelHandlerSession session = (ChannelHandlerSession) cacheProvider.get(key);
         if (session != null){
             session.setLastTime(System.currentTimeMillis());
-        }
-        cacheProvider.put(session.getKey(),session,cacheProvider.EXPIRED_TIME);
+            cacheProvider.put(session.getKey(),session,cacheProvider.EXPIRED_TIME);
 
-        this.send2Kafka(Cmd.CMD_HEARTBEAT,key);
+            this.send2Kafka(Cmd.CMD_HEARTBEAT,key);
+        }else {
+            handlerProvider.remove(ctx);
+        }
     }
 
     private void send2Kafka(String cmd,String key){
