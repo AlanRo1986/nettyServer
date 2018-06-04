@@ -2,11 +2,12 @@
 
 ##1.框架说明
 ```$xslt
-    架构:SpringBoot + Netty + Kafka + Redis 简称SNKR架构
+    SocketIOServer框架是一款专门给硬件与软件通信交互的框架。主要使用Netty作为socket数据通信，Kafka作为消息通知，
+    并使用Redis作为数据缓存，系统架构采用:SpringBoot + Netty + Kafka + Redis 简称SNKR架构，无持久化数据库。
     其中Kafka需要zookeeper支持，详细的配置，请自行search。
     
-    框架主要业务：socket；同时集成了websocket&UDP协议服务端，详情请查阅：com.lanxinbase.socket..代码。
-    为了做功能测试，集成了SpringMVC，理论上是不需要的，可自行在NettyApplication中屏幕注解。
+    框架主要业务：socket通信；同时集成了websocket&UDP协议服务端，详情请查阅：com.lanxinbase.socket..代码。
+    为了做功能测试，集成了SpringMVC，理论上是不需要的，可自行在NettyApplication中屏蔽注解。
 ```
 ##2.框架包说明
 ```$xslt
