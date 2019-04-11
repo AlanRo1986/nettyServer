@@ -2,16 +2,19 @@
 
 ##1.框架说明
 ```$xslt
-    SocketIOServer框架是一款专门给硬件与软件通信交互的框架。主要使用Netty作为socket数据通信，Kafka作为消息通知，
-    并使用Redis作为数据缓存，系统架构采用:SpringBoot + Netty + Kafka + Redis 简称SNKR架构，无持久化数据库。
-    其中Kafka需要zookeeper支持，详细的配置，请自行search。
+    SocketIOServer框架是一款专门为硬件与计算机设备或计算机数据通信的框架。主要核心功能
+    是使用Netty插件作为socket数据通信的服务端，Kafka插件作为消息通知，并使用Redis作为数据缓存，
+    持久化数据层使用Mybatis，数据库使用Mysql。
     
-    框架主要业务：socket通信；同时集成了websocket&UDP协议服务端，详情请查阅：com.lanxinbase.socket..代码。
-    为了做功能测试，集成了SpringMVC，理论上是不需要的，可自行在NettyApplication中屏蔽注解。
-    
-    测试数据：两台电脑每台电脑分别模拟16000~16400 socket客户端线程，线程发送消息后会自动休眠60s，测试
-    可支持~32546可客户端连接，资源有限，所以不做更高的测试，理论上应该可以支撑到15万socket端。
-    具体测试代码：test/java/com/lanxinbase/JavaUI.java
+    系统架构采用:SpringBoot + Mybatis + Netty + Kafka + Redis 简称SMNKR架构。
+    其中Kafka插件需要zookeeper支持，详细的配置，请自行search。
+      
+    框架核心业务：socket通信及报文解析，同时集成了对websocket&UDP协议支持，
+    详情请查阅：com.lanxinbase.socket..包中的代码。
+    测试数据：两台计算机作为客户终端（socket），普通电脑作为一个服务终端（HD硬盘），
+    每台客户端分别模拟16000~16400个线程，线程发送消息后会自动休眠5s。
+    测试结果：可支持〉32546个客户端连接，由于资源有限，所以不做更高的测试，理论上可以支撑到15万socket客户端。
+    测试代码：test/java/com/lanxinbase/JavaUI.java
 ```
 ##2.框架包说明
 ```$xslt
